@@ -2,8 +2,8 @@ bin
 include
 lib
 .Python
-tests/
 .envrc
 __pycache__
 _env
-testsrt
+tests/tests_temporary
+_saves
