@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLUBS Board | GUDLFT</title>
+
+    <style>
+    table {
+    border-collapse: collapse;
+    }
+
+    td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    }
+
+    tr:nth-child(even) {
+    background-color: #dddddd;
+    }
+    </style>
+</head>
+
+<body>
+        <h1>Welcome to the CLUBS board</h1>
+
+    {% with messages = get_flashed_messages()%}
+    {% if messages %}
+        <ul>
+       {% for message in messages %}
+            <li>{{message}}</li>
+        {% endfor %}
+       </ul>
+    {% endif%}
+
+    <h3>List of all current clubs and their available points:</h3>
+
+
+
+    <div style="margin-left: 10px">
+        <table>
+                <tr>
+                    <th style="min-width: 150px">Name of the club</th>
+                    <th>Number of available points</th>
+                </tr>
+                
+                {% for club in clubs %}
+                    <tr>
+                        <th>{{club['name']}}</th>
+                        <th style="text-align: center">{{club['points']}}</th>
+                    </tr>
+                {% endfor %}
+                    
+                
+        </table>
+    </div>
+
+    {%endwith%}
+
+</body>
+</html>

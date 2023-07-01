@@ -5,5 +5,4 @@ lib
 .envrc
 __pycache__
 _env
-tests/tests_temporary
-_saves
+htmlcov
