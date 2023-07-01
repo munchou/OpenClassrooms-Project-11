@@ -1,32 +1,34 @@
-from server import app, check_competition_date
+from server import check_competition_date
+from datetime import datetime, timedelta
 
 
 class TestSeatsPastCompetition:
+    future_date = (datetime.now() + timedelta(hours=1)).strftime("%Y-%m-%d %H:%M:%S")
+    past_date = (datetime.now() + timedelta(hours=-1)).strftime("%Y-%m-%d %H:%M:%S")
+
     competitions_test = [
         {
             "name": "Spring Festival",
-            "date": "2028-03-27 10:00:00",
+            "date": future_date,
             "numberOfPlaces": "25",
         },
         {
             "name": "Fall Classic",
-            "date": "2020-10-22 13:30:00",
+            "date": past_date,
             "numberOfPlaces": "13",
         },
     ]
 
     def test_past_competition(self):
-        competition = self.competitions_test[1]
         competitions_over, competitions_ongoing = check_competition_date(
             self.competitions_test
         )
 
-        assert competition in competitions_over
+        assert competitions_over == [self.competitions_test[1]]
 
     def test_coming_competition(self):
-        competition = self.competitions_test[0]
         competitions_over, competitions_ongoing = check_competition_date(
             self.competitions_test
         )
 
-        assert competition in competitions_ongoing
+        assert competitions_ongoing == [self.competitions_test[0]]

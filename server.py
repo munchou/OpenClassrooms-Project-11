@@ -111,6 +111,7 @@ def purchasePlaces():
     availablePlaces = int(competition["numberOfPlaces"])
     club_points = int(club["points"])
     print(f"\nCLUB'S POINT: {club_points}")
+    print(f"\navailablePlaces: {availablePlaces}")
 
     placesRequired = abs(int(request.form["places"]))
 

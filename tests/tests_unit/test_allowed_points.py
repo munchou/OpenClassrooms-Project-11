@@ -1,4 +1,5 @@
-from server import app, clubs, competitions
+import server
+from server import app
 
 
 class TestAllowedPoints:
@@ -8,7 +9,7 @@ class TestAllowedPoints:
         {
             "name": "Club",
             "email": "test@club.com",
-            "points": "13",
+            "points": "7",
         }
     ]
     competition_test = [
@@ -20,11 +21,12 @@ class TestAllowedPoints:
     ]
 
     def setup_method(self):
-        self.club = clubs[1]
+        server.clubs = self.club_test
+        server.competitions = self.competition_test
 
     def test_purchase_with_enough_point(self):
-        club = self.club
-        competition = competitions[0]
+        club = self.club_test[0]
+        competition = self.competition_test[0]
         response = self.client.post(
             "/purchasePlaces",
             data={
@@ -39,8 +41,8 @@ class TestAllowedPoints:
         assert "Great! Booking complete!" in response.data.decode()
 
     def test_purchase_not_enough_points(self):
-        club = self.club
-        competition = competitions[0]
+        club = self.club_test[0]
+        competition = self.competition_test[0]
         response = self.client.post(
             "/purchasePlaces",
             data={
@@ -57,8 +59,8 @@ class TestAllowedPoints:
         )
 
     def test_purchase_OK_with_negative_input(self):
-        club = self.club
-        competition = competitions[0]
+        club = self.club_test[0]
+        competition = self.competition_test[0]
         response = self.client.post(
             "/purchasePlaces",
             data={
@@ -73,8 +75,8 @@ class TestAllowedPoints:
         assert "Great! Booking complete!" in response.data.decode()
 
     def test_purchase_with_null_input(self):
-        club = self.club
-        competition = competitions[0]
+        club = self.club_test[0]
+        competition = self.competition_test[0]
         response = self.client.post(
             "/purchasePlaces",
             data={
