@@ -77,4 +77,45 @@ Voilà! You can notice that not only has the booking been confirmed, but the clu
 ![img](_readme_img/06.png)
 
 
+## Testing process
+- ### Unit and integration tests
+The test were run using pytest.
+You simply need to type `pytest` and let the magic do its deed (to get more details about the tests, you can type `pytest -v`).
+If the terminal displays any red, it's NOT normal!
+Here's what you should expect:
+
+![img](_readme_img/07.png)
+
+- ### Unit and integration tests coverage
+You can either type `pytest --cov` to get a quick result:
+
+![img](tests/reports/pytest_cov.png)
+
+Or get an HTML output by using `coverage html`, which is pretty much the same as the above one:
+
+![img](tests/reports/coverage(v7.2.7).png)
+
+
+- ### Performance test
+The Locust module (v7.2.7) was used to run performance test.
+To do so, you must:
+1) Run your app server (very important! or else it won't work)
+2) Run Locust by simply typing `locust` in your terminal. If it tells you that it couldn't find the lucstfile.py file, type `locust -f tests/performance_tests/locustfile.py`.
+3) Your terminal will show you that you can access Locust through http://0.0.0.0:8089. If your browser doesn't allow you to connect to that address, try  http://localhost:8089.
+4) The host address must be your app's server's, in that case http://127.0.0.1:5000.
+
+- ### Reports
+I totally understand you wouldn't want to run all those tedious tests. Which is why I prepared you some screenshots. As friendly as Peter Parker!
+
+- Coverage (same as above):
+
+![img](tests/reports/coverage(v7.2.7).png)
+
+- Locust report (note that I stopped the test once 6 users were connected):
+
+![img](tests/reports/locust_report_1688290965.png)
+You can also get the [HTML report here](tests/reports/locust_report_1688290965.864094.html)
+
+There you gooo, that's it for that projet, cheers!
+
 P.S.: Sam, you are absolutely not fit to be a developer, I expect your resignation letter by next Monday. è_é
