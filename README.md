@@ -119,3 +119,5 @@ You can also get the [HTML report here](tests/reports/locust_report_1688290965.8
 There you gooo, that's it for that projet, cheers!
 
 P.S.: Sam, you are absolutely not fit to be a developer, I expect your resignation letter by next Monday. è_é
+
+P.P.S.: big thanks to Corentin and Arnadu! <3
