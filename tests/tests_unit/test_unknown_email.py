@@ -1,3 +1,4 @@
+import server
 from server import app
 
 
@@ -11,7 +12,9 @@ class TestLoginEmail:
         THEN check the email is valid
         """
 
-        result = self.client.post("/showSummary", data=dict(email="john@simplylift.co"))
+        result = self.client.post(
+            "/showSummary", data={"email": server.clubs[0]["email"]}
+        )
         output = result.status_code
         expected = 200
         assert output == expected
@@ -22,7 +25,7 @@ class TestLoginEmail:
         WHEN nothing is entered in the input box
         THEN check there is nothing hence the redirection happens
         """
-        result = self.client.post("/showSummary", data=dict(email=""))
+        result = self.client.post("/showSummary", data={"email": ""})
         # assert result.status_code == 500
         # Returns 500 if not TRY/EXCEPT fix
         output = result.status_code
@@ -37,7 +40,7 @@ class TestLoginEmail:
         THEN check the email is wrong hence the redirection happens
         """
         result = self.client.post(
-            "/showSummary", data=dict(email="labanana@testmail.com")
+            "/showSummary", data={"email": "labanana@testmail.com"}
         )
         # assert result.status_code == 500
         # Returns 500 if not TRY/EXCEPT fix
