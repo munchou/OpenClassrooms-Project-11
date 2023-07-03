@@ -26,21 +26,21 @@ or download the ZIP file and extract it in a chosen folder.
 
 
 ## Starting the program
-You must tell flask where to the current application. For powershell, use that command:
+You must tell flask where to get the current application from. For powershell, use that command:
 `$env:FLASK_APP = "server.py"`
 
 then `flask run`
 
 For Bash:
-`$ export FLASK_APP=hello`
+`$ export FLASK_APP=server`
 `$ flask run`
 
 For Fish:
-`$ set -x FLASK_APP hello`
+`$ set -x FLASK_APP server`
 `$ flask run`
 
 For CMD:
-`> set FLASK_APP=hello`
+`> set FLASK_APP=server`
 `> flask run`
 
 
