@@ -1,5 +1,7 @@
 # gudlift-registration
 
+# (go to the QA branch to access the final version AND the right README)
+
 1. Why
 
 
